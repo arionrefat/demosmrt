@@ -17,31 +17,32 @@ function Page() {
     <div className="mx-auto p-8 flex flex-row justify-between w-5/6">
       <Card className="border-0">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl text-center">Sign In</CardTitle>
+          <CardTitle className="text-2xl text-center">Add paitent</CardTitle>
           <CardDescription className="text-center">
-            Good to see you again
+            Add paitent to serial
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="email@example.com" />
+            <Label htmlFor="email">Paitent Name</Label>
+            <Input id="email" type="text" placeholder="hasan" />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" />
+            <Label htmlFor="password">Age</Label>
+            <Input id="password" type="text" placeholder="18" />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="password">Blood Group</Label>
+            <Input id="password" type="text" placeholder="A positive" />
           </div>
           <div className="flex items-start gap-4">
-            <Button>Sign In</Button>
+            <Button>Add paitent</Button>
           </div>
         </CardContent>
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle>Team Members</CardTitle>
-          <CardDescription>
-            Invite your team members to collaborate.
-          </CardDescription>
+          <CardTitle>Paitent Viewer</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-6">
           <div className="flex items-center justify-between space-x-4">
@@ -52,13 +53,11 @@ function Page() {
               </Avatar>
               <div>
                 <p className="text-sm font-medium leading-none">Sofia Davis</p>
-                <p className="text-sm text-muted-foreground">m@example.com</p>
               </div>
             </div>
             <div>
               <div className="flex items-start gap-4">
-                <Button>Sign In</Button>
-                <Button>Sign In</Button>
+                <Button>Begin Treatment</Button>
               </div>
             </div>
           </div>
@@ -70,13 +69,11 @@ function Page() {
               </Avatar>
               <div>
                 <p className="text-sm font-medium leading-none">Jackson Lee</p>
-                <p className="text-sm text-muted-foreground">p@example.com</p>
               </div>
             </div>
             <div>
               <div className="flex items-start gap-4">
-                <Button>Sign In</Button>
-                <Button>Sign In</Button>
+                <Button>Begin Treatment</Button>
               </div>
             </div>
           </div>
