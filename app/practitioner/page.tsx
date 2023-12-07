@@ -1,5 +1,7 @@
 "use client"
 
+import { useState } from "react"
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,7 +14,22 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
+type patients = {
+  name: string
+  age: number
+  bloodGroup: string
+}
+
 function Page() {
+  const [paitent, setPaitentType] = useState<patients[]>([])
+  const [name, setName] = useState("")
+  const [age, setAge] = useState<number>(0)
+  const [bloodGroup, setBloodGroup] = useState("")
+
+  const addPatient = (newPatient: patients) => {
+    setPaitentType([...paitent, newPatient])
+  }
+
   return (
     <div className="mx-auto p-8 flex flex-row justify-between w-5/6">
       <Card className="border-0">
@@ -25,18 +42,42 @@ function Page() {
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="email">Paitent Name</Label>
-            <Input id="email" type="text" placeholder="hasan" />
+            <Input
+              id="name"
+              type="text"
+              placeholder="hasan"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="password">Age</Label>
-            <Input id="password" type="text" placeholder="18" />
+            <Input
+              id="age"
+              type="number"
+              placeholder="18"
+              value={age}
+              onChange={(e) => setAge(Number(e.target.value))}
+            />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="password">Blood Group</Label>
-            <Input id="password" type="text" placeholder="A positive" />
+            <Input
+              id="bloodGroup"
+              type="text"
+              placeholder="A positive"
+              value={bloodGroup}
+              onChange={(e) => setBloodGroup(e.target.value)}
+            />
           </div>
           <div className="flex items-start gap-4">
-            <Button>Add paitent</Button>
+            <Button
+              onClick={() =>
+                addPatient({ name: name, age: age, bloodGroup: bloodGroup })
+              }
+            >
+              Add patient
+            </Button>
           </div>
         </CardContent>
       </Card>
@@ -45,38 +86,26 @@ function Page() {
           <CardTitle>Paitent Viewer</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-6">
-          <div className="flex items-center justify-between space-x-4">
-            <div className="flex items-center space-x-4">
-              <Avatar>
-                <AvatarImage src="/avatars/01.png" />
-                <AvatarFallback>OM</AvatarFallback>
-              </Avatar>
+          {paitent.map((patient, index) => (
+            <div className="flex items-center justify-between space-x-4">
+              <div className="flex items-center space-x-4">
+                <Avatar>
+                  <AvatarImage src="/avatars/01.png" />
+                  <AvatarFallback>OM</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="text-sm font-medium leading-none">
+                    {patient.name}
+                  </p>
+                </div>
+              </div>
               <div>
-                <p className="text-sm font-medium leading-none">Sofia Davis</p>
+                <div className="flex items-start gap-4">
+                  <Button>Begin Treatment</Button>
+                </div>
               </div>
             </div>
-            <div>
-              <div className="flex items-start gap-4">
-                <Button>Begin Treatment</Button>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between space-x-4">
-            <div className="flex items-center space-x-4">
-              <Avatar>
-                <AvatarImage src="/avatars/02.png" />
-                <AvatarFallback>JL</AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="text-sm font-medium leading-none">Jackson Lee</p>
-              </div>
-            </div>
-            <div>
-              <div className="flex items-start gap-4">
-                <Button>Begin Treatment</Button>
-              </div>
-            </div>
-          </div>
+          ))}
         </CardContent>
       </Card>
     </div>
