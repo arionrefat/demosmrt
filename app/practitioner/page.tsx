@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -26,7 +27,9 @@ function Page() {
   const [age, setAge] = useState<number>(0)
   const [bloodGroup, setBloodGroup] = useState("")
 
+  const router = useRouter()
   const addPatient = (newPatient: patients) => {
+    // we are pusing an element into the array
     setPaitentType([...paitent, newPatient])
   }
 
@@ -71,11 +74,7 @@ function Page() {
             />
           </div>
           <div className="flex items-start gap-4">
-            <Button
-              onClick={() =>
-                addPatient({ name: name, age: age, bloodGroup: bloodGroup })
-              }
-            >
+            <Button onClick={() => addPatient({ name, age, bloodGroup })}>
               Add patient
             </Button>
           </div>
@@ -101,7 +100,9 @@ function Page() {
               </div>
               <div>
                 <div className="flex items-start gap-4">
-                  <Button>Begin Treatment</Button>
+                  <Button onClick={() => router.push("/medhistory")}>
+                    Begin Treatment
+                  </Button>
                 </div>
               </div>
             </div>

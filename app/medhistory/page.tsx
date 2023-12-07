@@ -59,7 +59,7 @@ function Page() {
                 </CardDescription>
               </CardHeader>
               {patientList.map((patient, index) => (
-                <CardContent className="flex justify-between">
+                <CardContent className="flex justify-between" key={index}>
                   <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight text-center">
                     {patient}
                   </h2>
@@ -67,7 +67,7 @@ function Page() {
                     <DialogDemo />
                     <Button
                       onClick={() => {
-                        addPatient("patient B", "Checkup Done")
+                        addPatient(patient, "Checkup Done")
                         removePatient(patient)
                       }}
                     >
@@ -75,7 +75,7 @@ function Page() {
                     </Button>
                     <Button
                       onClick={() => {
-                        addPatient("patient B", "Admitted to Hospital")
+                        addPatient(patient, "Admitted to Hospital")
                         removePatient(patient)
                       }}
                     >

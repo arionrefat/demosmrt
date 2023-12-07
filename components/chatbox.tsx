@@ -23,11 +23,11 @@ export default function Chatbox() {
 
   const addMessage = (message: string) => {
     let chats: Chat = {
-      sender: "John Doe",
+      sender: "Jane Doe",
       message: message,
     }
-
-    setGlobalChat([...globalChat, chats])
+    const newchat = [...globalChat, chats]
+    setGlobalChat(newchat)
   }
 
   return (
@@ -71,7 +71,9 @@ export default function Chatbox() {
               className="w-full"
               placeholder="Type your message..."
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => {
+                setMessage(e.target.value)
+              }}
             />
           </form>
         </div>
